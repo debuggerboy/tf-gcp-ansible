@@ -1,0 +1,11 @@
+# Files
+.terraform.lock.hcl
+anish.json
+*.tfstate
+*.backup
+*.bkp
+*.bak
+
+# Directories
+.terraform/
+plans/
