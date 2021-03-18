@@ -10,8 +10,11 @@ resource "google_compute_instance" "default" {
    }
  }
 
-// Make sure flask is installed on all new instances for later steps
- metadata_startup_script = "sudo echo 'deb http://ppa.launchpad.net/ansible/ansible/ubuntu trusty main' > /etc/apt/sources.list.d/ansible-debian.list 2>/dev/null; sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367; sudo apt-get update; sudo apt-get install -yq python3 python3-pip python3-venv ansible"
+ // Make sure ansible is installed on all new instances for later steps
+ metadata_startup_script = file("${path.module}/install-deps.sh")
+ metadata = {
+   ssh-keys = "anish:${file("~/.ssh/id_rsa.pub")}"
+ }
 
  network_interface {
    network = "default"
@@ -20,4 +23,24 @@ resource "google_compute_instance" "default" {
      // Include this section to give the VM an external ip address
    }
  }
+}
+
+resource "google_compute_firewall" "default" {
+ name    = "ansible-firewall"
+ network = "default"
+
+ allow {
+   protocol = "tcp"
+   ports    = ["22"]
+ }
+}
+
+// A variable for extracting the external IP address of the instance
+
+output "name" {
+ value = google_compute_instance.default.name
+}
+
+output "ip" {
+ value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
 }
