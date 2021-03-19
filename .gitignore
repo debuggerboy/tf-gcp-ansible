@@ -5,6 +5,9 @@ anish.json
 *.backup
 *.bkp
 *.bak
+*.key
+*.pub
+*.log
 
 # Directories
 .terraform/
