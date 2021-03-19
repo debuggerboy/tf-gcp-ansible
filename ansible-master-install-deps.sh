@@ -4,3 +4,4 @@ sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 93C4A3FD7BB9C367
 sudo apt-get update
 sudo apt-get install -yq python3 python3-pip python3-venv ansible stackdriver-agent
 sudo rm add-monitoring-agent-repo.sh
+sudo chmod 600 /home/anish/.ssh/id_rsa

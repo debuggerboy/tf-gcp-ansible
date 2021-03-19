@@ -10,11 +10,25 @@ resource "google_compute_instance" "default" {
    }
  }
 
- // Make sure ansible is installed on all new instances for later steps
- metadata_startup_script = file("${path.module}/install-deps.sh")
  metadata = {
    ssh-keys = "anish:${file("~/.ssh/id_rsa.pub")}"
  }
+
+ provisioner "file" {
+  source = "creds/ansible-ci.key"
+  destination = "/home/anish/.ssh/id_rsa"
+
+  connection {
+    type = "ssh"
+    user = "anish"
+    host = self.network_interface.0.access_config.0.nat_ip
+    private_key = file("~/.ssh/id_rsa")
+    agent = "false"
+  }
+ }
+
+ // Make sure ansible is installed on all new instances for later steps
+ metadata_startup_script = file("${path.module}/ansible-master-install-deps.sh")
 
  network_interface {
    network = "default"
@@ -37,10 +51,10 @@ resource "google_compute_firewall" "default" {
 
 // A variable for extracting the external IP address of the instance
 
-output "name" {
+output "ansible_master_name" {
  value = google_compute_instance.default.name
 }
 
-output "ip" {
+output "ansible_master_ip" {
  value = google_compute_instance.default.network_interface.0.access_config.0.nat_ip
 }
