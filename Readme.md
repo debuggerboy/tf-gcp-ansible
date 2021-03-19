@@ -25,3 +25,5 @@ Sources:
 - https://cloud.google.com/community/tutorials/getting-started-on-gcp-with-terraform
 
 - https://github.com/ansible-semaphore/semaphore
+
+- https://www.assured.se/2019/12/19/gcp-security/
