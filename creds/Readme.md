@@ -15,6 +15,12 @@ ansible-ci
 ansible-ci.pub
 ```
 
+Rename `ansible-ci` to `ansible-ci.key`
+
+```
+mv ansible-ci ansible-ci.key
+```
+
 Then, issue:
 
 ```
