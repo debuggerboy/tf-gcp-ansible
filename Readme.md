@@ -27,3 +27,5 @@ Sources:
 - https://github.com/ansible-semaphore/semaphore
 
 - https://www.assured.se/2019/12/19/gcp-security/
+
+- https://cloud.google.com/docs/terraform
