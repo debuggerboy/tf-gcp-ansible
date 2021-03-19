@@ -14,6 +14,12 @@ variable "gcp_infra_region" {
  default = "us-west1"
 }
 
+variable "gcp_infra_zone" {
+ type = string
+ description = "Enter the name of GCP Zone name"
+ default = "us-west1-a"
+}
+
 variable "ansible_slave_count" {
  type = number
  description = "Enter the number of ansible slaves needed"
