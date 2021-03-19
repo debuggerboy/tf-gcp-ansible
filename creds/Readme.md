@@ -31,7 +31,7 @@ cat creds/ansible-ci.pub >> auth_keys.pub
 Then issue:
 
 ```
-chmod 600 creds/ansible-ci creds/ansible-ci.pub creds/auth_keys.pub
+chmod 600 ansible-ci ansible-ci.pub creds/auth_keys.pub
 ```
 
 The SSH key file generation is completed.
