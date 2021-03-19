@@ -2,8 +2,8 @@
 resource "google_compute_instance" "slave" {
  name         = "slave-${random_id.instance_id.hex}-${count.index}"
  machine_type = "f1-micro"
- zone         = "us-west1-a"
- count        = 2
+ zone         = var.gcp_infra_zone
+ count        = var.ansible_slave_count
 
  boot_disk {
    initialize_params {

@@ -2,7 +2,7 @@
 resource "google_compute_instance" "default" {
  name         = "master-${random_id.instance_id.hex}"
  machine_type = "f1-micro"
- zone         = "us-west1-a"
+ zone         = var.gcp_infra_zone
 
  boot_disk {
    initialize_params {

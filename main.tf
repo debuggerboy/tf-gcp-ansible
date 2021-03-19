@@ -1,8 +1,8 @@
 // Configure the Google Cloud provider
 provider "google" {
- credentials = file("anish.json")
- project     = "study-299721"
- region      = "us-west1"
+ credentials = file(var.gcp_cred_file)
+ project     = var.gcp_project_name
+ region      = var.gcp_infra_region
 }
 
 // Terraform plugin for creating random ids
