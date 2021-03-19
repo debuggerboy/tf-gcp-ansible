@@ -5,7 +5,7 @@ Create a standalone GCP Instance using Debian 10 and install Python3 and Ansible
 Pre-Steps:
 
 - copy your GCP "json credentials" file into this directory.
-- modify `main.cf` with the name of the json credential file.
+- modify `vars.cf` with the name of the json credential file or pass it during invocation.
 - refer the `creds/Readme.md` file and create the SSH keys
 
 Steps:
